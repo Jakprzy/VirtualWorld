@@ -17,6 +17,36 @@ public abstract class Organism {
         this.strenght = strenght;
     }
 
+    public void actionStart(int positionX,int positionY) { //poczatkowe położenie organizmu, losowanie x i y
+        do {
+            Random randX = new Random();
+            positionX = randX.nextInt(21);
+            Random randY = new Random();
+            positionY = randY.nextInt(21);
+            System.out.println("Połozenie poczatkowe: x: " + positionX + "y: " + positionY);
+        }while(positionX != positionX && positionY != positionY);
+            }
+
+
+    public void actionNext(int positionX, int positionY) { //każdy kolejny ruch
+        Random rand_n = new Random();
+        int n = rand_n.nextInt(4);
+        if (n == 0)                // ruch w gore
+            positionY += 1;
+        else if (n == 1)         //ruch w dol
+            positionY -= 1;
+        else if (n == 2)       //ruch w prawo
+            positionX += 1;
+        else                   //ruch w lewo
+            positionX -= 1;
+
+        System.out.println("Aktualne położenie: x: " + positionX + "y: " + positionY);
+    }
+
+    public void collision(){
+
+    }
+
     public int getPositionX() {
         return positionX;
     }
@@ -39,36 +69,6 @@ public abstract class Organism {
 
     public void setWhichWorld(int whichWorld) {
         this.whichWorld = whichWorld;
-    }
-
-    public void actionStart() { //poczatkowe położenie organizmu, losowanie x i y
-        while(positionX != positionX && positionY != positionY) {
-            Random randX = new Random();
-            positionX = randX.nextInt(21);
-            Random randY = new Random();
-            positionY = randY.nextInt(21);
-            System.out.println("Połozenie poczatkowe: x: " + positionX + "y: " + positionY);
-        }
-            }
-
-
-    public void actionNext() { //każdy kolejny ruch
-        Random rand_n = new Random();
-        int n = rand_n.nextInt(4);
-        if (n == 0)                // ruch w gore
-            positionY += 1;
-        else if (n == 1)         //ruch w dol
-            positionY -= 1;
-        else if (n == 2)       //ruch w prawo
-            positionX += 1;
-        else                   //ruch w lewo
-            positionX -= 1;
-
-        System.out.println("Aktualne położenie: x: " + positionX + "y: " + positionY);
-    }
-
-    public void collision(){
-
     }
 
 }
