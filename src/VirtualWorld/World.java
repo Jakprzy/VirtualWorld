@@ -4,29 +4,42 @@ import VirtualWorld.Organism.Organism;
 import VirtualWorld.Organism.Wolf;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class World {
 
 
-    private static int maxSize = 20;
-    static List<Organism> organisms = new ArrayList<>();
+    private int maxSize = 20;
+
+    public List<Organism> getOrganisms() {
+        return organisms;
+    }
+
+    public void setOrganisms(List<Organism> organisms) {
+        this.organisms = organisms;
+    }
+
+    private List<Organism> organisms = new ArrayList<>();
 
     public void addOrganism(OrganismType organismType) {
+
+        Organism organism = null;
         Point newPoint = this.getNewPoint();
         switch (organismType) {
             case WOLF:
-                new Wolf(9, 5, newPoint, this);
-                System.out.println(OrganismType.WOLF);
+                organism = new Wolf(newPoint, this);
                 break;
             case GRASS:
-                new Grass(5, 0, newPoint, this);
+                organism = new Grass(newPoint, this);
                 break;
             default:
                 System.out.println("złe dane!!");
                 break;
         }
+        this.organisms.add(organism);
+
     }
 
     public Point getNewPoint() {  // otrzymanie nowego punktu wraz ze sprawedzeniem czy nie ma juz takiego punktu
@@ -55,30 +68,15 @@ public class World {
         return returnOrganism;
     }
 
-    public Point Move() {
-        Point pointPush = new Point();
-        Random rand_n = new Random();
-        int n = rand_n.nextInt(4);
-        if (n == 0)                // ruch w gore
-            pointPush.y += 1;
-        else if (n == 1)         //ruch w dol
-            pointPush.y -= 1;
-        else if (n == 2)       //ruch w prawo
-            pointPush.x += 1;
-        else                   //ruch w lewo
-            pointPush.x -= 1;
-        return pointPush;
+    public void drawTheWorld() {
+        for (Organism organism : organisms) {
+            organism.drawMe();
+        }
     }
-
-    public void commitOrganism(OrganismType organismType) {
-
-        if ( organismType == organismType)
-            addOrganism(organismType);
-        else;
-
-
-
-
+    public void makeRound() {
+        for (Organism organism : organisms){
+                organism.doAction();
+        }
 
     }
 }
