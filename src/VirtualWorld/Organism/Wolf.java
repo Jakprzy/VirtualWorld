@@ -1,25 +1,20 @@
 package VirtualWorld.Organism;
 
+import VirtualWorld.World;
+
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
 public class Wolf extends Animal{
-
-
+    public Wolf(int strength , int iniciative, Point point , World world ){
+     this.strength = 9;
+     this.initiative = 5;
+    }
     @Override
     public void drawMe() {
-        Random randX = new Random();
-        this.point.x = randX.nextInt(21);
-        Random randY = new Random();
-        this.point.y = randY.nextInt(21);
-      System.out.println("Position: x: " + this.point.x + " y: " + this.point.y);
+      System.out.println("I'm WOLF: Position: x: " + this.point.getX()+ " y: " + this.point.getY());
     }
 
-    @Override
-    public void setStatistic(int strength, int initiative) {
-        this.strength = strength;
-        this.initiative = initiative;
-        System.out.println("I'm Wolf, statistics: S :" + this.strength + "I: " + this.initiative);
-    }
 }
 

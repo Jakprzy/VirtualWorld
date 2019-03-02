@@ -1,28 +1,14 @@
 package VirtualWorld;
 
-
-import VirtualWorld.Organism.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import VirtualWorld.Organism.Organism;
+import VirtualWorld.Organism.Wolf;
 
 public class Main {
     public static void main(String[] args){
 
-        Wolf wolf = new Wolf();
-        wolf.setStatistic(9,5);
-        wolf.drawMe();
-        Grass grass = new Grass();
-        grass.drawMe();
-        grass.setStatistic(5,0);
-        List<Organism> organisms = new ArrayList<>();
-        organisms.add(wolf);
-        organisms.add(grass);
-
-
-
-
-
+    World world = new World();
+    world.addOrganism(OrganismType.WOLF);
+    world.addOrganism(OrganismType.GRASS);
 
     }
 }

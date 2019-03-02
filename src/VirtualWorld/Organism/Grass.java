@@ -1,26 +1,19 @@
 package VirtualWorld.Organism;
 
+import VirtualWorld.World;
+
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
 public class Grass extends Organism {
-
+    public Grass(int strength , int iniciative, Point point , World world ){
+        this.strength = 5;
+        this.initiative = 0;
+    }
     @Override
     public void drawMe() {
-
-        Random randX = new Random();
-        this.point.x = randX.nextInt(21);
-        Random randY = new Random();
-        this.point.y = randY.nextInt(21);
-        System.out.println("Position: x: " + this.point.x + " y: " + this.point.y);
-
-    }
-
-    @Override
-    public void setStatistic(int strength, int initiative) {
-        this.strength = strength;
-        this.initiative = initiative;
-        System.out.println("I'm Grass, statistics: S :" + this.strength + ", I: " + this.initiative);
+        System.out.println("I'm Grass: Position: x: " + this.point.getX()+ " y: " + this.point.getY());
     }
 
 }
